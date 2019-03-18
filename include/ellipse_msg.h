@@ -23,6 +23,8 @@
 #include "sbg_driver/SbgOdoVel.h"
 #include "sbg_driver/SbgEvent.h"
 #include "sbg_driver/SbgPressure.h"
+#include "sbg_driver/measures_sbg.h"
+
 
 // SBG_ECOM_LOG_STATUS
 void read_ecom_log_status(sbg_driver::SbgStatus &msg, const SbgBinaryLogData *pLogData);
@@ -35,6 +37,10 @@ void read_ecom_log_imu_data(sbg_driver::SbgImuData &msg, const SbgBinaryLogData 
 
 // SBG_ECOM_LOG_EKF_EULER
 void read_ecom_log_ekf_euler(sbg_driver::SbgEkfEuler &msg, const SbgBinaryLogData *pLogData);
+
+// Lefort : measures_sbg
+void read_ecom_log_measures_euler(sbg_driver::measures_sbg &msg, const SbgBinaryLogData *pLogData);
+void read_ecom_log_measures_imu(sbg_driver::measures_sbg &msg, const SbgBinaryLogData *pLogData);
 
 // SBG_ECOM_LOG_EKF_QUAT
 void read_ecom_log_ekf_quat(sbg_driver::SbgEkfQuat &msg, const SbgBinaryLogData *pLogData);

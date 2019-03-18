@@ -117,6 +117,25 @@ void read_ecom_log_ekf_euler(sbg_driver::SbgEkfEuler &msg, const SbgBinaryLogDat
 	read_ekf_solution_status(msg.status, pLogData->ekfEulerData.status);
 }
 
+void read_ecom_log_measures_euler(sbg_driver::measures_sbg &msg, const SbgBinaryLogData *pLogData){
+	msg.header.stamp = ros::Time::now();
+	msg.time_stamp   = pLogData->ekfEulerData.timeStamp;
+	msg.Phi   = pLogData->ekfEulerData.euler[0];
+	msg.Theta = pLogData->ekfEulerData.euler[1];
+	msg.Psi   = pLogData->ekfEulerData.euler[2];
+	read_ekf_solution_status(msg.status, pLogData->ekfEulerData.status);
+}
+
+void read_ecom_log_measures_imu(sbg_driver::measures_sbg &msg, const SbgBinaryLogData *pLogData){
+	msg.header.stamp = ros::Time::now();
+	msg.time_stamp   = pLogData->ekfEulerData.timeStamp;
+	msg.P     = pLogData->imuData.gyroscopes[0];
+	msg.Q     = pLogData->imuData.gyroscopes[1];
+	msg.R     = pLogData->imuData.gyroscopes[2];
+	read_ekf_solution_status(msg.status, pLogData->ekfEulerData.status);
+}
+
+
 void read_ecom_log_ekf_quat(sbg_driver::SbgEkfQuat &msg, const SbgBinaryLogData *pLogData){
 	msg.header.stamp = ros::Time::now();
 	msg.header.stamp = ros::Time::now();

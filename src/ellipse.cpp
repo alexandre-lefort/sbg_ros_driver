@@ -241,6 +241,7 @@ void Ellipse::load_param(){
 
 void Ellipse::publish(){
   sbgEComHandle(&m_comHandle);
+  bool imu_published(false), euler_published(false);
   if(m_new_sbgStatus && m_log_status != 0){
     m_new_sbgStatus = false;
     m_sbgStatus_pub.publish(m_sbgStatus_msg);
@@ -254,11 +255,17 @@ void Ellipse::publish(){
   if(m_new_sbgImuData && m_log_imu_data != 0){
     m_new_sbgImuData = false;
     m_sbgImuData_pub.publish(m_sbgImuData_msg);
+    imu_published = true;
   }
 
   if(m_new_sbgEkfEuler && m_log_ekf_euler != 0){
     m_new_sbgEkfEuler = false;
     m_sbgEkfEuler_pub.publish(m_sbgEkfEuler_msg);
+    euler_published = true;
+  }
+
+  if(imu_published && euler_published){
+    m_measures_sbg_pub.publish(m_measures_sbg_msg);
   }
 
   if(m_new_sbgEkfQuat && m_log_ekf_quat != 0){
@@ -353,11 +360,13 @@ SbgErrorCode onLogReceived(SbgEComHandle *pHandle, SbgEComClass msgClass, SbgECo
 
   case SBG_ECOM_LOG_IMU_DATA:
     read_ecom_log_imu_data(e->m_sbgImuData_msg, pLogData);
+    read_ecom_log_measures_imu(e->m_measures_sbg_msg, pLogData);
     e->m_new_sbgImuData = true;
     break;
 
   case SBG_ECOM_LOG_EKF_EULER:
     read_ecom_log_ekf_euler(e->m_sbgEkfEuler_msg, pLogData);
+    read_ecom_log_measures_euler(e->m_measures_sbg_msg, pLogData);
     e->m_new_sbgEkfEuler = true;
     break;
 

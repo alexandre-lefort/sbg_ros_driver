@@ -55,6 +55,7 @@ class Ellipse
     sbg_driver::SbgUtcTime m_sbgUtcTime_msg;
     sbg_driver::SbgImuData m_sbgImuData_msg;
     sbg_driver::SbgEkfEuler m_sbgEkfEuler_msg;
+    sbg_driver::measures_sbg m_measures_sbg_msg;
     sbg_driver::SbgEkfQuat m_sbgEkfQuat_msg;
     sbg_driver::SbgEkfNav m_sbgEkfNav_msg;
     sbg_driver::SbgShipMotion m_sbgShipMotion_msg;
@@ -99,6 +100,7 @@ class Ellipse
     ros::Publisher m_sbgUtcTime_pub;
     ros::Publisher m_sbgImuData_pub;
     ros::Publisher m_sbgEkfEuler_pub;
+    ros::Publisher m_measures_sbg_pub;
     ros::Publisher m_sbgEkfQuat_pub;
     ros::Publisher m_sbgEkfNav_pub;
     ros::Publisher m_sbgShipMotion_pub;

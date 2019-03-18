@@ -43,7 +43,7 @@ add_message_files(FILES
   SbgMagStatus.msg
   SbgShipMotionStatus.msg
   SbgUtcTimeStatus.msg
-
+  measures_sbg.msg
   SbgEkfEuler.msg
   SbgGpsPos.msg
   SbgMag.msg
