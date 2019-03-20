@@ -8,7 +8,7 @@
 
 uartConf:
   # Port Name
-  portName: "/dev/ttyUSB8"
+  portName: /dev/ttyUSB0
 
   # Baude rate (4800 ,9600 ,19200 ,38400 ,115200 [default],230400 ,460800 ,921600)
   baudRate: 115200
@@ -42,7 +42,7 @@ sensorParameters:
   # 3 MARINE          Used in marine and underwater applications
   # 4 AIRPLANE        For fixed wings aircraft
   # 5 HELICOPTER      For rotary wing aircraft
-  motionProfie: 1
+  motionProfie: 3
 
 # IMU_ALIGNMENT_LEVER_ARM
 imuAlignementLeverArm:

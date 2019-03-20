@@ -63,8 +63,10 @@ void Ellipse::init_publishers(){
     m_sbgUtcTime_pub = m_node->advertise<sbg_driver::SbgUtcTime>("utc_time",10);
   if(m_log_imu_data !=0)
     m_sbgImuData_pub = m_node->advertise<sbg_driver::SbgImuData>("imu_data",10);
-  if(m_log_ekf_euler !=0)
-    m_sbgEkfEuler_pub = m_node->advertise<sbg_driver::SbgEkfEuler>("ekf_euler",10);
+  if(m_log_ekf_euler !=0) {
+    m_sbgEkfEuler_pub  = m_node->advertise<sbg_driver::SbgEkfEuler>("ekf_euler",10);
+    m_measures_sbg_pub = m_node->advertise<sbg_driver::measures_sbg>("measures_sbg",10);
+  }
   if(m_log_ekf_quat !=0)
     m_sbgEkfQuat_pub = m_node->advertise<sbg_driver::SbgEkfQuat>("ekf_quat",10);
   if(m_log_ekf_nav !=0)
